@@ -46,8 +46,9 @@ void placeServers(int num_racks, vector<int> &server_len,
   vector<int> order(num_servers);
   iota(order.begin(), order.end(), 0);
 
+// TODO: experimental comparator, change later to prioritize capacity
   sort(order.begin(), order.end(), [&](int a, int b) {
-    if (server_len[a] != server_len[b])
+    if (server_cap[a] != server_cap[b])
       return server_cap[a] > server_cap[b];
     else
       return server_len[a] > server_len[b];
